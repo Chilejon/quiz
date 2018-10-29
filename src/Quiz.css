@@ -1,0 +1,100 @@
+body {
+  padding: 50px;
+  background-color: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+}
+#container {
+  display: flex;
+}
+
+.entryForm {
+  width: 400%;
+  height: 100%;
+  border: 2px solid rgba(0, 89, 255, 0.308);
+  border-radius: 25px;
+  float: left;
+  padding: 10px;
+}
+
+.imageBorder {
+  width: 300px;
+  border: 2px solid rgba(0, 89, 255, 0.308);
+  border-radius: 25px;
+  float: left;
+  padding: 10px;
+}
+
+.bigImageBorder {
+  width: 400px;
+  border: 2px solid rgba(0, 255, 0.308);
+  border-radius: 25px;
+  float: right;
+  padding: 10px;
+}
+
+.bigImageBorder img {
+  width: 100%;
+}
+
+.searchBorder {
+  width: 300px;
+  border: 2px solid rgba(0, 89, 255, 0.308);
+  border-radius: 25px;
+  padding: 10px;
+}
+
+#cont {
+  display: none;
+}
+.show:focus + .hide {
+  display: inline;
+}
+.show:focus + .hide + #cont {
+  display: block;
+}
+
+.slider {
+  width: 70px;
+  border: 2px solid rgb(187, 187, 255);
+  border-radius: 25px;
+  float: left;
+  padding: 20px;
+}
+
+.sliderTable {
+  border: 2px solid #003399;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+.sliderTable,
+th,
+td {
+  border: 1px solid #003399;
+  text-align: center;
+  vertical-align: middle;
+  height: 20px;
+  width: 20px;
+}
+
+.sliderTable th {
+  background-color: #0066ff;
+  color: white;
+}
+
+.sliderTable .minus {
+  background-color: pink;
+}
+.sliderTable .plus {
+  background-color: green;
+}
+.sliderTable .even {
+  background-color: orange;
+}
+
+.sliderTable .token {
+  color: red;
+  background-color: #003399;
+  font-size: 16px;
+  font-weight: bold;
+}
