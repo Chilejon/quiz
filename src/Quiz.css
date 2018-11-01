@@ -24,6 +24,14 @@ body {
   padding: 10px;
 }
 
+.cheggersBorder {
+  width: 300px;
+  border: 2px solid rgba(0, 89, 255, 0.308);
+  border-radius: 25px;
+  float: left;
+  padding: 10px;
+}
+
 .bigImageBorder {
   width: 400px;
   border: 2px solid rgba(0, 255, 0.308);
@@ -54,7 +62,7 @@ body {
 }
 
 .slider {
-  width: 70px;
+  width: 100px;
   border: 2px solid rgb(187, 187, 255);
   border-radius: 25px;
   float: left;
@@ -74,7 +82,7 @@ td {
   text-align: center;
   vertical-align: middle;
   height: 20px;
-  width: 20px;
+  width: 120px;
 }
 
 .sliderTable th {

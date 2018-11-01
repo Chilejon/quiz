@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import RightWrong from "./RightWrong";
 
 class Slider extends Component {
   constructor(props, context) {
@@ -92,6 +93,9 @@ class Slider extends Component {
         <button onClick={() => {this.moveToken('forward')}}>Plus</button>
         <tr>
           <td>{this.state.score}</td>
+        </tr>
+        <tr>
+    <td>{<RightWrong />}</td>
         </tr>
       </table>
     );

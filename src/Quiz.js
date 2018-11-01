@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Slider from "./components/Slider";
+import Cheggers from "./components/Cheggers";
 
 class Quiz extends Component {
   constructor(props, context) {
@@ -51,6 +52,11 @@ class Quiz extends Component {
             <Slider id={slider.id} team={slider.team} score={slider.score} />
           </section>
         ))}
+
+        <section className="cheggersBorder">
+          <h3>Chegger's</h3>
+          <Cheggers />
+          </section>
       </div>
     );
   }
