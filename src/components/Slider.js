@@ -17,7 +17,7 @@ class Slider extends Component {
         </tr>
         <button
           onClick={() => {
-            this.props.moveToken("back");
+            this.props.moveToken("back", this.props.id);
           }}
         >
           Minus
@@ -81,7 +81,7 @@ class Slider extends Component {
         </tr>
         <button
           onClick={() => {
-            this.props.moveToken("forward");
+            this.props.moveToken("forward", this.props.id);
           }}
         >
           Plus

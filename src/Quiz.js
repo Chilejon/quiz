@@ -72,12 +72,26 @@ class Quiz extends Component {
     this.setState(copy);
   }
 
-  moveToken(event) {
+  moveToken(event, id) {
     var score = parseInt(this.state.score);
     if (event === "back" || event === "forward") {
       event === "back" ? (score = score - 1) : (score = score + 1);
     }
     this.setState({ score: score });
+
+    let copy = Object.assign({}, this.state);
+    copy.slider = copy.slider.map(sli => {
+      if (sli.id === id) {
+        if (event === "back" || event === "forward") {
+          event === "back"
+            ? (sli.score = parseInt(sli.score) - 1)
+            : (sli.score = parseInt(sli.score) + 1);
+          sli.score = sli.score.toString();
+        }
+      }
+      return sli;
+    });
+    this.setState(copy);
   }
 
   render() {
@@ -97,11 +111,16 @@ class Quiz extends Component {
               id="teamscore"
               ref={teamScore => (this.teamScore = teamScore)}
               required
+              size="1"
             />
             <button type="submit">add</button>
           </form>
-        </div>
 
+          <section className="cheggersBorder">
+            <h3>Chegger's</h3>
+            <Cheggers adjustScores={this.adjustScores} />
+          </section>
+        </div>
         {this.state.slider.map(slider => (
           <section className="slider">
             <Slider
@@ -115,11 +134,6 @@ class Quiz extends Component {
             />
           </section>
         ))}
-
-        <section className="cheggersBorder">
-          <h3>Chegger's</h3>
-          <Cheggers adjustScores={this.adjustScores} />
-        </section>
       </div>
     );
   }
