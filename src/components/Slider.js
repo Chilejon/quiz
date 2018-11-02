@@ -5,9 +5,7 @@ class Slider extends Component {
   constructor(props, context) {
     super(props, context);
 
-    this.state = {
-    };
-    
+    this.state = {};
   }
 
   render() {
@@ -17,88 +15,110 @@ class Slider extends Component {
         <tr>
           <th>{this.props.team}</th>
         </tr>
-        <button onClick={() => {this.props.moveToken('back')}}>Minus</button>
+        <button
+          onClick={() => {
+            this.props.moveToken("back");
+          }}
+        >
+          Minus
+        </button>
         <tr id={this.props.id + "minus"}>
           <td>Minus</td>
         </tr>
-        <tr className={this.props.score==="-8"?"token":"minus"}>
+        <tr className={this.props.score === "-8" ? "token" : "minus"}>
           <td>-8</td>
         </tr>
-        <tr className={this.props.score==="-7"?"token":"minus"}>
+        <tr className={this.props.score === "-7" ? "token" : "minus"}>
           <td>-7</td>
         </tr>
-        <tr className={this.props.score==="-6"?"token":"minus"}>
+        <tr className={this.props.score === "-6" ? "token" : "minus"}>
           <td>-6</td>
         </tr>
-        <tr className={this.props.score==="-5"?"token":"minus"}>
+        <tr className={this.props.score === "-5" ? "token" : "minus"}>
           <td>-5</td>
         </tr>
-        <tr className={this.props.score==="-4"?"token":"minus"}>
+        <tr className={this.props.score === "-4" ? "token" : "minus"}>
           <td>-4</td>
         </tr>
-        <tr className={this.props.score==="-3"?"token":"minus"}>
+        <tr className={this.props.score === "-3" ? "token" : "minus"}>
           <td>-3</td>
         </tr>
-        <tr className={this.props.score==="-2"?"token":"minus"}>
+        <tr className={this.props.score === "-2" ? "token" : "minus"}>
           <td>-2</td>
         </tr>
-        <tr className={this.props.score==="-1"?"token":"minus"}>
+        <tr className={this.props.score === "-1" ? "token" : "minus"}>
           <td>-1</td>
         </tr>
-        <tr className={this.props.score==="0"?"token":"even"}>
+        <tr className={this.props.score === "0" ? "token" : "even"}>
           <td>0</td>
         </tr>
-        <tr className={this.props.score==="1"?"token":"plus"}>
+        <tr className={this.props.score === "1" ? "token" : "plus"}>
           <td>+1</td>
         </tr>
-        <tr className={this.props.score==="2"?"token":"plus"}>
+        <tr className={this.props.score === "2" ? "token" : "plus"}>
           <td>+2</td>
         </tr>
-        <tr className={this.props.score==="3"?"token":"plus"}>
+        <tr className={this.props.score === "3" ? "token" : "plus"}>
           <td>+3</td>
         </tr>
-        <tr className={this.props.score==="4"?"token":"plus"}>
+        <tr className={this.props.score === "4" ? "token" : "plus"}>
           <td>+4</td>
         </tr>
-        <tr className={this.props.score==="5"?"token":"plus"}>
+        <tr className={this.props.score === "5" ? "token" : "plus"}>
           <td>+5</td>
         </tr>
-        <tr className={this.props.score==="6"?"token":"plus"}>
+        <tr className={this.props.score === "6" ? "token" : "plus"}>
           <td>+6</td>
         </tr>
-        <tr className={this.props.score==="7"?"token":"plus"}>
+        <tr className={this.props.score === "7" ? "token" : "plus"}>
           <td>+7</td>
         </tr>
-        <tr className={this.props.score==="8"?"token":"plus"}>
+        <tr className={this.props.score === "8" ? "token" : "plus"}>
           <td>+8</td>
         </tr>
         <tr id={this.props.id + "plus"}>
           <td>Plus</td>
         </tr>
-        <button onClick={() => {this.props.moveToken('forward')}}>Plus</button>
+        <button
+          onClick={() => {
+            this.props.moveToken("forward");
+          }}
+        >
+          Plus
+        </button>
         <tr>
           <td>{this.props.score}</td>
         </tr>
         <tr>
-        <p>Did they answer it right or wrong?</p>
-     <label>
-       <input type="radio" value="Right"
-         checked={this.state.answeredCorrect === "Right"}
-         onChange={() => {
-          this.props.setTheirAnswers("Right", this.props.id);
-        }}
-       />
-       Right
-     </label>
-     <label>
-       <input type="radio" value="Wrong"
-         checked={this.state.answeredCorrect === "Wrong"}
-         onChange={() => {
-          this.props.setTheirAnswers("Wrong", this.props.id);
-        }}
-       />
-       Wrong
-     </label>
+          <td>
+            <label>
+              <input
+                type="radio"
+                value="Right"
+                name={this.props.id}
+                checked={this.state.answeredCorrect === "Right"}
+                onChange={() => {
+                  this.props.setTheirAnswers("Right", this.props.id);
+                }}
+              />
+              Right
+            </label>
+            <label>
+              <input
+                type="radio"
+                value="Wrong"
+                name={this.props.id}
+                checked={this.state.answeredCorrect === "Wrong"}
+                onChange={() => {
+                  this.props.setTheirAnswers("Wrong", this.props.id);
+                }}
+              />
+              Wrong
+            </label>
+          </td>
+        </tr>
+        <tr>
+          <td>Answered: {this.props.rightOrWrong}</td>
         </tr>
       </table>
     );
