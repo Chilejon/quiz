@@ -7,22 +7,50 @@ class Quiz extends Component {
     super(props, context);
     this.state = {
       slider: [],
-      showForm: false
+      showForm: false,
+      CheggersRightOrWrong: "" 
     };
     this.addTeam = this.addTeam.bind(this);
+    this.adjustScores = this.adjustScores.bind(this);
   }
 
   addTeam(e) {
-    var newArray = this.state.slider.slice();
+    var newArray = this.state.slider.slice()
+    var defaultScore = 0
+    if (this.teamScore.value !== 0)
+      {
+        defaultScore = this.teamScore.value
+      }
+      else
+      {
+        defaultScore = 0
+      }
+
     newArray.push({
       id: this.teamName.value,
       team: this.teamName.value,
-      score: this.teamScore.value
+      score: defaultScore
     });
+
     this.setState({ slider: newArray });
     e.preventDefault();
     this.teamName.value = "";
     this.teamScore = "";
+  }
+
+  adjustScores(rightOrWrong) {
+    this.setState({
+      CheggersRightOrWrong: rightOrWrong
+    })
+
+    let copy = Object.assign({}, this.state); 
+
+    copy.slider = copy.slider.map((sli) => {
+      sli.score = 5
+      return sli
+    })
+
+    this.setState(copy) 
   }
 
   render() {
@@ -49,13 +77,13 @@ class Quiz extends Component {
 
         {this.state.slider.map(slider => (
           <section className="slider">
-            <Slider id={slider.id} team={slider.team} score={slider.score} />
+            <Slider id={slider.id} team={slider.team} score={slider.score}  />
           </section>
         ))}
 
         <section className="cheggersBorder">
           <h3>Chegger's</h3>
-          <Cheggers />
+          <Cheggers adjustScores={this.adjustScores} />
           </section>
       </div>
     );
