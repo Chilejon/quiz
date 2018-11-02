@@ -10,9 +10,10 @@ class Quiz extends Component {
       showForm: false,
       CheggersRightOrWrong: "" 
     };
-    this.addTeam = this.addTeam.bind(this);
-    this.adjustScores = this.adjustScores.bind(this);
+    this.addTeam = this.addTeam.bind(this)
+    this.adjustScores = this.adjustScores.bind(this)
     this.moveToken = this.moveToken.bind(this)
+    this.setTheirAnswers = this.setTheirAnswers.bind(this)
   }
 
   addTeam(e) {
@@ -30,7 +31,8 @@ class Quiz extends Component {
     newArray.push({
       id: this.teamName.value,
       team: this.teamName.value,
-      score: defaultScore
+      score: defaultScore,
+      rightOrWrong: ""
     });
 
     this.setState({ slider: newArray });
@@ -43,13 +45,30 @@ class Quiz extends Component {
     let copy = Object.assign({}, this.state); 
     copy.slider = copy.slider.map((sli) => {
       var score = parseInt(sli.score)
-      score = score + 1
+      if(rightOrWrong === sli.rightOrWrong)
+      {
+        score = score + 1
+      }
       sli.score = score.toString() 
       return sli
     })
     this.setState(copy)
    }
-
+  
+   setTheirAnswers(event, id) {
+    let copy = Object.assign({}, this.state); 
+    copy.slider = copy.slider.map((sli) => {
+      if(sli.id === id)
+      {
+      if(event !== null)
+      {
+        sli.rightOrWrong = event
+      }
+    }
+      return sli
+    })
+    this.setState(copy)
+   }
 
    moveToken(event) {
     var score = parseInt(this.state.score)
@@ -85,7 +104,7 @@ class Quiz extends Component {
 
         {this.state.slider.map(slider => (
           <section className="slider">
-            <Slider id={slider.id} team={slider.team} score={slider.score} moveToken={this.moveToken} />
+            <Slider id={slider.id} team={slider.team} score={slider.score} moveToken={this.moveToken} setTheirAnswers={this.setTheirAnswers} />
           </section>
         ))}
 

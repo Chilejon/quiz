@@ -7,14 +7,8 @@ class Slider extends Component {
 
     this.state = {
     };
+    
   }
-
-  componentDidMount() {
-    //this.moveToken('no')
-  }
-
- 
-
 
   render() {
     console.log("props", this.props);
@@ -86,7 +80,25 @@ class Slider extends Component {
           <td>{this.props.score}</td>
         </tr>
         <tr>
-    <td>{<RightWrong />}</td>
+        <p>Did they answer it right or wrong?</p>
+     <label>
+       <input type="radio" value="Right"
+         checked={this.state.answeredCorrect === "Right"}
+         onChange={() => {
+          this.props.setTheirAnswers("Right", this.props.id);
+        }}
+       />
+       Right
+     </label>
+     <label>
+       <input type="radio" value="Wrong"
+         checked={this.state.answeredCorrect === "Wrong"}
+         onChange={() => {
+          this.props.setTheirAnswers("Wrong", this.props.id);
+        }}
+       />
+       Wrong
+     </label>
         </tr>
       </table>
     );
