@@ -12,6 +12,7 @@ class Quiz extends Component {
     };
     this.addTeam = this.addTeam.bind(this);
     this.adjustScores = this.adjustScores.bind(this);
+    this.moveToken = this.moveToken.bind(this)
   }
 
   addTeam(e) {
@@ -49,6 +50,17 @@ class Quiz extends Component {
     this.setState(copy)
    }
 
+
+   moveToken(event) {
+    var score = parseInt(this.state.score)
+    if (event === 'back' || event === 'forward')
+    {
+      event === 'back'? score = score - 1 : score = score + 1 
+    }
+    this.setState({ score: score });
+  }
+  
+
   render() {
     return (
       <div>
@@ -73,7 +85,7 @@ class Quiz extends Component {
 
         {this.state.slider.map(slider => (
           <section className="slider">
-            <Slider id={slider.id} team={slider.team} score={slider.score}  />
+            <Slider id={slider.id} team={slider.team} score={slider.score} moveToken={this.moveToken} />
           </section>
         ))}
 
