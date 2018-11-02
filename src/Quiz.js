@@ -39,19 +39,15 @@ class Quiz extends Component {
   }
 
   adjustScores(rightOrWrong) {
-    this.setState({
-      CheggersRightOrWrong: rightOrWrong
-    })
-
     let copy = Object.assign({}, this.state); 
-
     copy.slider = copy.slider.map((sli) => {
-      sli.score = 5
+      var score = parseInt(sli.score)
+      score = score + 1
+      sli.score = score.toString() 
       return sli
     })
-
-    this.setState(copy) 
-  }
+    this.setState(copy)
+   }
 
   render() {
     return (
@@ -85,6 +81,7 @@ class Quiz extends Component {
           <h3>Chegger's</h3>
           <Cheggers adjustScores={this.adjustScores} />
           </section>
+
       </div>
     );
   }
