@@ -97,7 +97,7 @@ class Quiz extends Component {
   render() {
     return (
       <div>
-        <div>
+        <div className="cheggersBorder">
           <form onSubmit={this.addTeam}>
             <p>Enter a team</p>
             <label>Team name</label>
@@ -115,7 +115,8 @@ class Quiz extends Component {
             />
             <button type="submit">add</button>
           </form>
-
+        </div>
+        <div>
           <section className="cheggersBorder">
             <h3>Chegger's</h3>
             <Cheggers adjustScores={this.adjustScores} />

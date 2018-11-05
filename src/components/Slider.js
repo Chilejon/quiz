@@ -13,16 +13,12 @@ class Slider extends Component {
     return (
       <table className="sliderTable" id={this.props.id}>
         <tr>
-          <th>{this.props.team}</th>
+          <th>
+            <h2>{this.props.team}</h2>
+          </th>
         </tr>
-        <button
-          onClick={() => {
-            this.props.moveToken("back", this.props.id);
-          }}
-        >
-          Minus
-        </button>
-        <tr id={this.props.id + "minus"}>
+
+        <tr className={parseInt(this.props.score) < -8 ? "token" : "minus"}>
           <td>Minus</td>
         </tr>
         <tr className={this.props.score === "-8" ? "token" : "minus"}>
@@ -76,18 +72,31 @@ class Slider extends Component {
         <tr className={this.props.score === "8" ? "token" : "plus"}>
           <td>+8</td>
         </tr>
-        <tr id={this.props.id + "plus"}>
+        <tr className={parseInt(this.props.score) > 8 ? "token" : "plus"}>
           <td>Plus</td>
         </tr>
-        <button
-          onClick={() => {
-            this.props.moveToken("forward", this.props.id);
-          }}
-        >
-          Plus
-        </button>
         <tr>
-          <td>{this.props.score}</td>
+          <td>
+            <button
+              onClick={() => {
+                this.props.moveToken("back", this.props.id);
+              }}
+            >
+              Minus
+            </button>
+            <button
+              onClick={() => {
+                this.props.moveToken("forward", this.props.id);
+              }}
+            >
+              Plus
+            </button>
+          </td>
+        </tr>
+        <tr className="currentScore">
+          <td>
+            <h2>{this.props.score}</h2>
+          </td>
         </tr>
         <tr>
           <td>
