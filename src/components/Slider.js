@@ -17,7 +17,32 @@ class Slider extends Component {
             <h2>{this.props.team}</h2>
           </th>
         </tr>
-
+        <tr className="currentScore">
+          <td>
+            <h2>{this.props.score}</h2>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button
+              onClick={() => {
+                this.props.setTheirAnswers("Right", this.props.id);
+              }}
+            >
+              <h2 className="green">&#10004;</h2>
+            </button>
+            <button
+              onClick={() => {
+                this.props.setTheirAnswers("Wrong", this.props.id);
+              }}
+            >
+              <h2 className="red">&#10005;</h2>
+            </button>
+          </td>
+        </tr>
+        <tr className="rightWrong">
+          <td>{this.props.rightOrWrong}</td>
+        </tr>
         <tr className={parseInt(this.props.score) < -8 ? "token" : "minus"}>
           <td>Minus</td>
         </tr>
@@ -82,52 +107,16 @@ class Slider extends Component {
                 this.props.moveToken("back", this.props.id);
               }}
             >
-              Minus
+              <h2 className="red">&#8722;</h2>
             </button>
             <button
               onClick={() => {
                 this.props.moveToken("forward", this.props.id);
               }}
             >
-              Plus
+              <h2 className="green">&#43;</h2>
             </button>
           </td>
-        </tr>
-        <tr className="currentScore">
-          <td>
-            <h2>{this.props.score}</h2>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <label>
-              <input
-                type="radio"
-                value="Right"
-                name={this.props.id}
-                checked={this.state.answeredCorrect === "Right"}
-                onChange={() => {
-                  this.props.setTheirAnswers("Right", this.props.id);
-                }}
-              />
-              Right
-            </label>
-            <label>
-              <input
-                type="radio"
-                value="Wrong"
-                name={this.props.id}
-                checked={this.state.answeredCorrect === "Wrong"}
-                onChange={() => {
-                  this.props.setTheirAnswers("Wrong", this.props.id);
-                }}
-              />
-              Wrong
-            </label>
-          </td>
-        </tr>
-        <tr>
-          <td>Answered: {this.props.rightOrWrong}</td>
         </tr>
       </table>
     );
