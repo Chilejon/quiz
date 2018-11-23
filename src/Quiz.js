@@ -7,13 +7,15 @@ class Quiz extends Component {
     super(props, context);
     this.state = {
       slider: [],
-      showForm: false,
-      CheggersRightOrWrong: ""
+      showForm: true,
+      CheggersRightOrWrong: ''
     };
-    this.addTeam = this.addTeam.bind(this);
-    this.adjustScores = this.adjustScores.bind(this);
-    this.moveToken = this.moveToken.bind(this);
-    this.setTheirAnswers = this.setTheirAnswers.bind(this);
+    this.addTeam = this.addTeam.bind(this)
+    this.adjustScores = this.adjustScores.bind(this)
+    this.moveToken = this.moveToken.bind(this)
+    this.setTheirAnswers = this.setTheirAnswers.bind(this)
+    this.setCheggerAnswers = this.setCheggerAnswers.bind(this)
+    this.closeEnterTeam = this.closeEnterTeam.bind(this)
   }
 
   addTeam(e) {
@@ -72,6 +74,11 @@ class Quiz extends Component {
     this.setState(copy);
   }
 
+  setCheggerAnswers(event, id) {
+    //alert(event)
+    (event ? this.setState({ CheggersRightOrWrong: 'Right'}) : this.setState({ CheggersRightOrWrong: 'Wrong'}))
+  }
+
   moveToken(event, id) {
     var score = parseInt(this.state.score);
     if (event === "back" || event === "forward") {
@@ -94,10 +101,18 @@ class Quiz extends Component {
     this.setState(copy);
   }
 
+  closeEnterTeam() {
+    (this.state.showForm ? this.setState({ showForm: false }) : this.setState({ showForm: true }))
+  }
+
   render() {
     return (
       <div>
-        <div className="cheggersBorder">
+                <button onClick={() => {
+                this.closeEnterTeam();
+              }}>Show/Hide</button>
+        <div>
+        {this.state.showForm && (<div className="cheggersBorder">
           <form onSubmit={this.addTeam}>
             <p>Enter a team</p>
             <label>Team name</label>
@@ -114,12 +129,14 @@ class Quiz extends Component {
               size="1"
             />
             <button type="submit">add</button>
+            
           </form>
-        </div>
-        <div>
+
+        </div>)}
+
           <section className="cheggersBorder">
             <h3>Chegger's</h3>
-            <Cheggers adjustScores={this.adjustScores} />
+            <Cheggers adjustScores={this.adjustScores} CheggersRightOrWrong={this.state.CheggersRightOrWrong} setCheggerAnswers={this.setCheggerAnswers} />
           </section>
         </div>
         {this.state.slider.map(slider => (

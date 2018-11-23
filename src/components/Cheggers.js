@@ -4,7 +4,8 @@ class Cheggers extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      answeredCorrect: ''
+      answeredCorrect: '',
+      CheggersRightOrWrong: ''
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -33,26 +34,45 @@ class Cheggers extends Component {
 <form onSubmit={this.handleSubmit}>
       <p>Did they answer it right or wrong?</p>
      
-          <label>
-            <input type="radio" value="Right"
+          {/*<label>
+             <input type="radio" value="Right"
               checked={this.state.answeredCorrect === "Right"}
               onChange={this.handleChange}
             />
-            Right
-          </label>
-          <label>
+            <h2 className="green">&#10004;</h2>
+          </label> */}
+          <button
+              onClick={() => {
+                this.props.setCheggerAnswers(true, this.props.id);
+              }}
+            >
+              <h2 className="green">&#10004;</h2>
+              
+            </button>
+            <button
+              onClick={() => {
+                this.props.setCheggerAnswers(false, this.props.id);
+              }}
+            >
+            <h2 className="red">&#10005;</h2>
+            </button>
+
+
+
+          {/* <label>
             <input type="radio" value="Wrong"
               checked={this.state.answeredCorrect === "Wrong"}
               onChange={this.handleChange}
             />
-            Wrong
-          </label>
-     
+            <h2 className="red">&#10005;</h2>
+          </label> */}
+          <label className="rightWrong">{this.props.CheggersRightOrWrong}</label>
+      <br/>
       <button 
       onClick={() => {
               this.props.adjustScores(this.state.answeredCorrect);
             }}>
-            adjust
+            Adjust
             </button>
     </form>
        </section>

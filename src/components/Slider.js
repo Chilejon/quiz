@@ -9,7 +9,7 @@ class Slider extends Component {
   }
 
   render() {
-    console.log("props", this.props);
+    //console.log("props", this.props);
     return (
       <table className="sliderTable" id={this.props.id}>
         <tr>
