@@ -8,14 +8,14 @@ class Quiz extends Component {
     this.state = {
       slider: [],
       showForm: true,
-      CheggersRightOrWrong: ''
+      CheggersRightOrWrong: ""
     };
-    this.addTeam = this.addTeam.bind(this)
-    this.adjustScores = this.adjustScores.bind(this)
-    this.moveToken = this.moveToken.bind(this)
-    this.setTheirAnswers = this.setTheirAnswers.bind(this)
-    this.setCheggerAnswers = this.setCheggerAnswers.bind(this)
-    this.closeEnterTeam = this.closeEnterTeam.bind(this)
+    this.addTeam = this.addTeam.bind(this);
+    this.adjustScores = this.adjustScores.bind(this);
+    this.moveToken = this.moveToken.bind(this);
+    this.setTheirAnswers = this.setTheirAnswers.bind(this);
+    this.setCheggerAnswers = this.setCheggerAnswers.bind(this);
+    this.closeEnterTeam = this.closeEnterTeam.bind(this);
   }
 
   addTeam(e) {
@@ -59,6 +59,7 @@ class Quiz extends Component {
       return sli;
     });
     this.setState(copy);
+    this.setState({ CheggersRightOrWrong: "" });
   }
 
   setTheirAnswers(event, id) {
@@ -76,7 +77,9 @@ class Quiz extends Component {
 
   setCheggerAnswers(event, id) {
     //alert(event)
-    (event ? this.setState({ CheggersRightOrWrong: 'Right'}) : this.setState({ CheggersRightOrWrong: 'Wrong'}))
+    event
+      ? this.setState({ CheggersRightOrWrong: "Right" })
+      : this.setState({ CheggersRightOrWrong: "Wrong" });
   }
 
   moveToken(event, id) {
@@ -102,41 +105,51 @@ class Quiz extends Component {
   }
 
   closeEnterTeam() {
-    (this.state.showForm ? this.setState({ showForm: false }) : this.setState({ showForm: true }))
+    this.state.showForm
+      ? this.setState({ showForm: false })
+      : this.setState({ showForm: true });
   }
 
   render() {
     return (
       <div>
-                <button onClick={() => {
-                this.closeEnterTeam();
-              }}>Show/Hide</button>
+        <button
+          onClick={() => {
+            this.closeEnterTeam();
+          }}
+        >
+          Show/Hide
+        </button>
         <div>
-        {this.state.showForm && (<div className="cheggersBorder">
-          <form onSubmit={this.addTeam}>
-            <p>Enter a team</p>
-            <label>Team name</label>
-            <input
-              id="teamName"
-              ref={teamName => (this.teamName = teamName)}
-              required
-            />
-            <label>score</label>
-            <input
-              id="teamscore"
-              ref={teamScore => (this.teamScore = teamScore)}
-              required
-              size="1"
-            />
-            <button type="submit">add</button>
-            
-          </form>
-
-        </div>)}
+          {this.state.showForm && (
+            <div className="cheggersBorder">
+              <form onSubmit={this.addTeam}>
+                <p>Enter a team</p>
+                <label>Team name</label>
+                <input
+                  id="teamName"
+                  ref={teamName => (this.teamName = teamName)}
+                  required
+                />
+                <label>score</label>
+                <input
+                  id="teamscore"
+                  ref={teamScore => (this.teamScore = teamScore)}
+                  required
+                  size="1"
+                />
+                <button type="submit">add</button>
+              </form>
+            </div>
+          )}
 
           <section className="cheggersBorder">
             <h3>Chegger's</h3>
-            <Cheggers adjustScores={this.adjustScores} CheggersRightOrWrong={this.state.CheggersRightOrWrong} setCheggerAnswers={this.setCheggerAnswers} />
+            <Cheggers
+              adjustScores={this.adjustScores}
+              CheggersRightOrWrong={this.state.CheggersRightOrWrong}
+              setCheggerAnswers={this.setCheggerAnswers}
+            />
           </section>
         </div>
         {this.state.slider.map(slider => (
