@@ -32,15 +32,6 @@ class Cheggers extends Component {
     return (
       <section>
         <form onSubmit={this.handleSubmit}>
-          <p>Did they answer it right or wrong?</p>
-
-          {/*<label>
-             <input type="radio" value="Right"
-              checked={this.state.answeredCorrect === "Right"}
-              onChange={this.handleChange}
-            />
-            <h2 className="green">&#10004;</h2>
-          </label> */}
           <button
             onClick={() => {
               this.props.setCheggerAnswers(true, this.props.id);
@@ -55,14 +46,6 @@ class Cheggers extends Component {
           >
             <h2 className="red">&#10005;</h2>
           </button>
-
-          {/* <label>
-            <input type="radio" value="Wrong"
-              checked={this.state.answeredCorrect === "Wrong"}
-              onChange={this.handleChange}
-            />
-            <h2 className="red">&#10005;</h2>
-          </label> */}
           <label className="rightWrong">
             {this.props.CheggersRightOrWrong}
           </label>
