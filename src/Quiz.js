@@ -152,6 +152,7 @@ class Quiz extends Component {
             />
           </section>
         </div>
+        <div className="blah">
         {this.state.slider.map(slider => (
           <section className="slider">
             <Slider
@@ -165,6 +166,7 @@ class Quiz extends Component {
             />
           </section>
         ))}
+        </div>
       </div>
     );
   }
