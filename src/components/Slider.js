@@ -17,11 +17,7 @@ class Slider extends Component {
             <h2>{this.props.team}</h2>
           </th>
         </tr>
-        <tr className="currentScore">
-          <td>
-            <h2>{this.props.score}</h2>
-          </td>
-        </tr>
+        
         <tr>
           <td>
             <button
@@ -44,7 +40,7 @@ class Slider extends Component {
           <td>{this.props.rightOrWrong}</td>
         </tr>
         <tr className={parseInt(this.props.score) < -8 ? "token" : "minus"}>
-          <td>Minus</td>
+        <td>&#60;-8</td>
         </tr>
         <tr className={this.props.score === "-8" ? "token" : "minus"}>
           <td>-8</td>
@@ -74,31 +70,31 @@ class Slider extends Component {
           <td>0</td>
         </tr>
         <tr className={this.props.score === "1" ? "token" : "plus"}>
-          <td>+1</td>
+          <td>1</td>
         </tr>
         <tr className={this.props.score === "2" ? "token" : "plus"}>
-          <td>+2</td>
+          <td>2</td>
         </tr>
         <tr className={this.props.score === "3" ? "token" : "plus"}>
-          <td>+3</td>
+          <td>3</td>
         </tr>
         <tr className={this.props.score === "4" ? "token" : "plus"}>
-          <td>+4</td>
+          <td>4</td>
         </tr>
         <tr className={this.props.score === "5" ? "token" : "plus"}>
-          <td>+5</td>
+          <td>5</td>
         </tr>
         <tr className={this.props.score === "6" ? "token" : "plus"}>
-          <td>+6</td>
+          <td>6</td>
         </tr>
         <tr className={this.props.score === "7" ? "token" : "plus"}>
-          <td>+7</td>
+          <td>7</td>
         </tr>
         <tr className={this.props.score === "8" ? "token" : "plus"}>
-          <td>+8</td>
+          <td>8</td>
         </tr>
         <tr className={parseInt(this.props.score) > 8 ? "token" : "plus"}>
-          <td>Plus</td>
+          <td>>8</td>
         </tr>
         <tr>
           <td>
@@ -116,6 +112,11 @@ class Slider extends Component {
             >
               <h2 className="green">&#43;</h2>
             </button>
+          </td>
+        </tr>
+        <tr className="currentScore">
+          <td>
+            <h2>{this.props.score}</h2>
           </td>
         </tr>
       </table>

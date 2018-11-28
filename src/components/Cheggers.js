@@ -46,17 +46,18 @@ class Cheggers extends Component {
           >
             <h2 className="red">&#10005;</h2>
           </button>
-          <label className="rightWrong">
-            {this.props.CheggersRightOrWrong}
-          </label>
-          <br />
+         
           <button
             onClick={() => {
               this.props.adjustScores(this.props.CheggersRightOrWrong);
             }}
           >
-            Adjust
+            <h2>Adjust</h2>
           </button>
+
+          <span className="wrongRight">
+            <strong>{this.props.CheggersRightOrWrong}</strong>
+          </span>
         </form>
       </section>
     );

@@ -122,7 +122,7 @@ class Quiz extends Component {
         </button>
         <div>
           {this.state.showForm && (
-            <div className="cheggersBorder">
+            <div className="entryForm">
               <form onSubmit={this.addTeam}>
                 <p>Enter a team</p>
                 <label>Team name</label>
