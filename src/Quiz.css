@@ -72,6 +72,7 @@ body {
   padding: 20px;
   text-align: center;
   margin-left: 0px;
+  font-weight: bold;
 }
 
 .blah {
@@ -84,6 +85,7 @@ body {
   font-size: 12px;
   text-align: center;
   background-color: orangered;
+
 }
 
 .sliderTable,
@@ -103,10 +105,14 @@ td {
 }
 
 .sliderTable .minus {
-  background-color: pink;
+  background-color: red;
+  color: #ffffff;
+  font-size: 12pt;
 }
 .sliderTable .plus {
   background-color: green;
+  color: #ffffff;
+  font-size: 12pt;
 }
 .sliderTable .even {
   background-color: orange;
@@ -140,9 +146,9 @@ td {
 }
 
 .sliderTable .token {
-  color: red;
+  color: yellow;
   background-color: #003399;
-  font-size: 16px;
+  font-size: 22px;
   font-weight: bold;
 }
 
