@@ -16,7 +16,7 @@ class Tile extends Component {
     return (
       <button
       onClick={() => {
-        this.props.handleSelection(this.props.label);
+        this.props.handleSelection(this.props.label, this.props.id);
       }}
       >
         {this.props.label}
