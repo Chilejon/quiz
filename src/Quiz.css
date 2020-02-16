@@ -4,6 +4,14 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+
+.fullWidthWall {
+  width: 400px;
+}
+.tileButton {
+  width: 100px;
+}
+
 #container {
   display: flex;
 }

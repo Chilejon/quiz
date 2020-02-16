@@ -20,11 +20,13 @@ class TheWall extends Component {
     this.handleSelection = this.handleSelection.bind(this);
     this.checkClicked = this.checkClicked.bind(this);
     this.onUpdateItem = this.onUpdateItem.bind(this);
+    this.shuffle = this.shuffle.bind(this);
 
   }
 
-  handleSelection(event, id) {
+  handleSelection(e, event, id) {
     console.log(event)
+    
     var clickedSoFar = parseInt(this.state.clicked);
     if (clickedSoFar === 0)
     {
@@ -53,6 +55,7 @@ class TheWall extends Component {
     }
     console.log(clickedSoFar)
     this.setState({clicked: clickedSoFar});
+    e.preventDefault();
   }
 
   onUpdateItem = i => {
@@ -74,7 +77,6 @@ class TheWall extends Component {
 
 
   checkClicked(selection4, id) {
-
     if (this.state.selection1.includes(id) && this.state.selection2.includes(id) && this.state.selection3.includes(id))
     {
       console.log("success")
@@ -93,30 +95,58 @@ class TheWall extends Component {
       console.log(this.state.selection1 + " " + this.state.selection2 + " " + this.state.selection3 + " " + selection4 + " " + id + " - " + id)
     }
   }
+
+  shuffle(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+  
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+  
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+  
+      // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+  
+    return array;
+  }
   
   render() {
+
+    var tiles = [
+      <Tile label={this.state.sets[0].tile1} id={this.state.sets[0].id} status={this.state.sets[0].status} handleSelection={this.handleSelection} />,
+      <Tile label={this.state.sets[0].tile2} id={this.state.sets[0].id} status={this.state.sets[0].status} handleSelection={this.handleSelection} />,
+      <Tile label={this.state.sets[0].tile3} id={this.state.sets[0].id} status={this.state.sets[0].status} handleSelection={this.handleSelection} />,
+      <Tile label={this.state.sets[0].tile4} id={this.state.sets[0].id} status={this.state.sets[0].status} handleSelection={this.handleSelection} />,
+        <Tile label={this.state.sets[1].tile1} id={this.state.sets[1].id} status={this.state.sets[1].status} handleSelection={this.handleSelection} />,
+        <Tile label={this.state.sets[1].tile2} id={this.state.sets[1].id} status={this.state.sets[1].status} handleSelection={this.handleSelection} />,
+        <Tile label={this.state.sets[1].tile3} id={this.state.sets[1].id} status={this.state.sets[1].status} handleSelection={this.handleSelection} />,
+        <Tile label={this.state.sets[1].tile4} id={this.state.sets[1].id} status={this.state.sets[1].status} handleSelection={this.handleSelection} />,
+        <Tile label={this.state.sets[2].tile1} id={this.state.sets[2].id} status={this.state.sets[2].status} handleSelection={this.handleSelection} />,
+        <Tile label={this.state.sets[2].tile2} id={this.state.sets[2].id} status={this.state.sets[2].status} handleSelection={this.handleSelection} />,
+        <Tile label={this.state.sets[2].tile3} id={this.state.sets[2].id} status={this.state.sets[2].status} handleSelection={this.handleSelection} />,
+        <Tile label={this.state.sets[2].tile4} id={this.state.sets[2].id} status={this.state.sets[2].status} handleSelection={this.handleSelection} />,
+        <Tile label={this.state.sets[3].tile1} id={this.state.sets[3].id} status={this.state.sets[3].status} handleSelection={this.handleSelection} />,
+        <Tile label={this.state.sets[3].tile2} id={this.state.sets[3].id} status={this.state.sets[3].status} handleSelection={this.handleSelection} />,
+        <Tile label={this.state.sets[3].tile3} id={this.state.sets[3].id} status={this.state.sets[3].status} handleSelection={this.handleSelection} />,
+        <Tile label={this.state.sets[3].tile4} id={this.state.sets[3].id} status={this.state.sets[3].status} handleSelection={this.handleSelection} />
+    ]
+    
+  tiles = this.shuffle(tiles)
+
+
     return (
       <div>
         <h1>The Wall</h1>
         <p>Selected: {this.state.clicked} </p>
+        <div className="fullWidthWall">
+       {tiles}
 
-        <Tile label={this.state.sets[0].tile1} id={this.state.sets[0].id} status={this.state.sets[0].status} handleSelection={this.handleSelection} />
-        <Tile label={this.state.sets[0].tile2} id={this.state.sets[0].id} status={this.state.sets[0].status} handleSelection={this.handleSelection} />
-        <Tile label={this.state.sets[0].tile3} id={this.state.sets[0].id} status={this.state.sets[0].status} handleSelection={this.handleSelection} />
-        <Tile label={this.state.sets[0].tile4} id={this.state.sets[0].id} status={this.state.sets[0].status} handleSelection={this.handleSelection} /><br/>
-        <Tile label={this.state.sets[1].tile1} id={this.state.sets[1].id} status={this.state.sets[1].status} handleSelection={this.handleSelection} />
-        <Tile label={this.state.sets[1].tile2} id={this.state.sets[1].id} status={this.state.sets[1].status} handleSelection={this.handleSelection} />
-        <Tile label={this.state.sets[1].tile3} id={this.state.sets[1].id} status={this.state.sets[1].status} handleSelection={this.handleSelection} />
-        <Tile label={this.state.sets[1].tile4} id={this.state.sets[1].id} status={this.state.sets[1].status} handleSelection={this.handleSelection} /><br/>
-        <Tile label={this.state.sets[2].tile1} id={this.state.sets[2].id} status={this.state.sets[2].status} handleSelection={this.handleSelection} />
-        <Tile label={this.state.sets[2].tile2} id={this.state.sets[2].id} status={this.state.sets[2].status} handleSelection={this.handleSelection} />
-        <Tile label={this.state.sets[2].tile3} id={this.state.sets[2].id} status={this.state.sets[2].status} handleSelection={this.handleSelection} />
-        <Tile label={this.state.sets[2].tile4} id={this.state.sets[2].id} status={this.state.sets[2].status} handleSelection={this.handleSelection} /><br/>
-        <Tile label={this.state.sets[3].tile1} id={this.state.sets[3].id} status={this.state.sets[3].status} handleSelection={this.handleSelection} />
-        <Tile label={this.state.sets[3].tile2} id={this.state.sets[3].id} status={this.state.sets[3].status} handleSelection={this.handleSelection} />
-        <Tile label={this.state.sets[3].tile3} id={this.state.sets[3].id} status={this.state.sets[3].status} handleSelection={this.handleSelection} />
-        <Tile label={this.state.sets[3].tile4} id={this.state.sets[3].id} status={this.state.sets[3].status} handleSelection={this.handleSelection} />
-        
+</div>
         </div>
     );
   }

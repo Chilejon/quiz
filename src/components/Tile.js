@@ -15,9 +15,10 @@ class Tile extends Component {
   render() {
     return (
       <button
-      onClick={() => {
-        this.props.handleSelection(this.props.label, this.props.id);
+      onClick={(e) => {
+        this.props.handleSelection(e, this.props.label, this.props.id);
       }}
+      className="tileButton"
       >
         {this.props.label}
         <br/>
